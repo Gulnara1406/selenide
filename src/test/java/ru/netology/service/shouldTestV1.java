@@ -20,9 +20,9 @@ import static org.openqa.selenium.Keys.ESCAPE;
 
 public class shouldTestV1 {
 
-    public String generateDate (int days,int years){
+    public String generateDate (int days){
         String Date;
-        LocalDate localDate = LocalDate.now().plusDays(days).plusYears(years);
+        LocalDate localDate = LocalDate.now().plusDays(days);
         Date = DateTimeFormatter.ofPattern("dd.MM.yyyy").format(localDate);
         return Date;
     }
@@ -36,7 +36,7 @@ public class shouldTestV1 {
     }
     @Test
     void shouldTest(){
-        String Date = generateDate(5,0);
+        String Date = generateDate(5);
         $("[data-test-id= 'city'] .input__control").setValue("Казань");
         $("[data-test-id = 'date'] .input__control").click();
         $("[data-test-id = 'date'] .input__control").sendKeys(Keys.chord(BACK_SPACE),Keys.chord(BACK_SPACE),Keys.chord(BACK_SPACE),Keys.chord(BACK_SPACE), Keys.chord(BACK_SPACE), Keys.chord(BACK_SPACE), Keys.chord(BACK_SPACE), Keys.chord(BACK_SPACE), Keys.chord(BACK_SPACE), Keys.chord(BACK_SPACE), Date);
